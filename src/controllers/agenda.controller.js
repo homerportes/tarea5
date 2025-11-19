@@ -21,11 +21,6 @@ let contactos = [
     telefono: '849-555-9012'
   }
 ];
-
-/**
- * Obtener todos los contactos
- * @route GET /agenda
- */
 const obtenerContactos = (req, res) => {
   try {
     res.status(200).json({
@@ -39,19 +34,10 @@ const obtenerContactos = (req, res) => {
     });
   }
 };
-
-/**
- * Agregar un nuevo contacto
- * @route POST /agenda
- */
 const agregarContacto = (req, res) => {
   try {
     const { nombre, apellido, telefono } = req.body;
-
-    // Crear nueva instancia del modelo
     const nuevoContacto = new Contacto(nombre, apellido, telefono);
-
-    // Validar el contacto
     const validacion = nuevoContacto.validar();
     if (!validacion.valid) {
       return res.status(400).json({
@@ -59,10 +45,7 @@ const agregarContacto = (req, res) => {
         errors: validacion.errors
       });
     }
-
-    // Agregar el contacto a la "base de datos"
     contactos.push(nuevoContacto.toJSON());
-
     res.status(201).json({
       success: true,
       message: 'Contacto agregado exitosamente',
@@ -75,7 +58,6 @@ const agregarContacto = (req, res) => {
     });
   }
 };
-
 module.exports = {
   obtenerContactos,
   agregarContacto

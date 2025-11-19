@@ -1,7 +1,3 @@
-/**
- * Middleware para validar datos de entrada
- */
-
 const validateContacto = (req, res, next) => {
   const { nombre, apellido, telefono } = req.body;
 

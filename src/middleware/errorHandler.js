@@ -1,7 +1,3 @@
-/**
- * Middleware para manejo centralizado de errores
- */
-
 const errorHandler = (err, req, res, next) => {
   console.error('Error:', err);
 
